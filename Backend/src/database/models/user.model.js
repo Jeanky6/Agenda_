@@ -36,3 +36,5 @@ class User extends Model{
         return { sequelize, tableName: USER_TABLE, modelName:'User', timestamps:false}
     }
 }
+
+module.exports = {USER_TABLE, UserSchema, User}
