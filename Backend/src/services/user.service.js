@@ -9,6 +9,11 @@ class UserService {
         const users = await this.model.findAll()
         return users
     }
+
+    async create(name, email, password, status){
+        const user = await this.model.create({name, email, password, status})
+        return user
+    }
 }
 
 module.exports = UserService

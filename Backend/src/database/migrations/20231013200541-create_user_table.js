@@ -1,39 +1,41 @@
 'use strict';
-
-const { DataTypes } = require('sequelize');
-const { USER_TABLE } =  require('./../models/user.model')
+const {DataTypes} = require('sequelize')
+const { USER_TABLE } = require('./../models/user.model')
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
+
     await queryInterface.createTable(USER_TABLE, {
-      id:{
+      id: {
         type: Sequelize.DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true,
+        primaryKey: true
       },
-      name:{
+      name: {
         type: Sequelize.DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
-      email:{
+      email: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false,
         unique: true
       },
-      password:{
+      password: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false
       },
-      status:{
+      status: {
         type: Sequelize.DataTypes.BOOLEAN,
         defaultValue: false
       }
-    })
-   
+
+
+    });
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
+
     await queryInterface.dropTable(USER_TABLE);
-  },
+  }
 };
